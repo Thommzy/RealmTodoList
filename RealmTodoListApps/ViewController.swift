@@ -12,7 +12,7 @@ var todos : Results<Todo>!
 var realm = try! Realm()
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var todoTableView: UITableView!
     
     override func viewDidLoad() {
