@@ -6,24 +6,28 @@
 //
 
 import UIKit
+import RealmSwift
 
 class InsertViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    let realm = try! Realm()
+    
+    @IBOutlet weak var todoTextField: UITextField!
+    @IBOutlet weak var todoSwitch: UISwitch!
+    
+    @IBAction func saveButtonAction(_ sender: Any) {
+        let todo = Todo()
+        todo.todoText = todoTextField.text!
+        todo.isDoneText = todoSwitch.isOn
+        try! self.realm.write {
+            self.realm.add(todo)
+        }
+        navigationController?.popViewController(animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-    */
-
+    
 }
+

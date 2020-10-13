@@ -1,0 +1,6 @@
+framework module Pods_RealmTodoListAppsTests {
+  umbrella header "Pods-RealmTodoListAppsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

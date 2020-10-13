@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Todo: Object {
+     @objc dynamic var todoText = ""
+     @objc dynamic var isDoneText = false
+}
