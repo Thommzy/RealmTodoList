@@ -28,6 +28,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         reload()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CallClick" {
+            let destination = segue.destination as! InsertViewController
+            let todo = todos[todoTableView.indexPathForSelectedRow?.row ?? 0]
+            destination.incomingTodo = todo
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
     }
@@ -42,6 +50,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func reload() {
         todoTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            try! realm.write {
+                realm.delete(todos[indexPath.row])
+            }
+            reload()
+        }
     }
 }
 

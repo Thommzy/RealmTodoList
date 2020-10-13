@@ -21,14 +21,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" id="jyi-fO-6Fw" customClass="TodoCell" customModule="RealmTodoListApps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="37"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="37.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jyi-fO-6Fw" id="uct-nC-4tg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="37.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSK-QC-7vJ">
-                                                    <rect key="frame" x="212.5" y="0.0" width="186.5" height="37"/>
+                                                    <rect key="frame" x="212.5" y="0.0" width="186.5" height="37.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="HKQ-OM-taN"/>
                                                     </constraints>
@@ -37,7 +37,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzN-Nd-O7I">
-                                                    <rect key="frame" x="20" y="11" width="186.5" height="15"/>
+                                                    <rect key="frame" x="20" y="11" width="186.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -61,6 +61,7 @@
                                         <connections>
                                             <outlet property="isDone" destination="WSK-QC-7vJ" id="WBE-HA-ZVq"/>
                                             <outlet property="todoText" destination="AzN-Nd-O7I" id="ahb-cu-97k"/>
+                                            <segue destination="3K3-A7-Buk" kind="show" identifier="CallClick" id="VRf-LL-fFs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -163,6 +164,9 @@
             <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VRf-LL-fFs"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
