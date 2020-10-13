@@ -6,14 +6,44 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ViewController: UIViewController {
+var todos : Results<Todo>!
+var realm = try! Realm()
 
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var todoTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        todos = realm.objects(Todo.self)
+        todoTableView.dataSource = self
+        todoTableView.delegate = self
+        reload()
+        //print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reload()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return todos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodoCell
+        let todo = todos[indexPath.row]
+        cell.todoText.text =  todo.todoText
+        cell.isDone.text = todo.isDoneText ? "It is Done" : "Do it"
+        return cell
+    }
+    
+    func reload() {
+        todoTableView.reloadData()
+    }
 }
+
+
 
